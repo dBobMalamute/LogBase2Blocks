@@ -105,34 +105,35 @@ MalamuteCasing
         Column
         {
             id: inPortLabelsColumn
-            x: inPortsColumn.x + inPortsColumn.width + 1;
-            y: plugBoxTop - 1;
+            x: inPortsColumn.x + inPortsColumn.width/2 - 2;
+            y: plugBoxTop - 2;
             width: inLabelWidth
 
-            spacing: CasingStyle.portSpacing();
+            spacing: CasingStyle.portSpacing() - 4;
 
             Repeater
             {
                 model: inPlugLabels
-                Text
+
+                Rectangle
                 {
-                    height: CasingStyle.portSize();
-                    font: CasingStyle.portLabelsFont();
-                    color: inPlugLabelColors[index]
-                    text: modelData
                     visible: modelData !== "";
-                    Rectangle
+                    width: text.width + text.x + 3
+                    height: CasingStyle.portSize() + 4;
+                    color: "#1a1a1a"
+                    border.width: 2
+                    border.color: "#333333"
+                    radius: 6
+                    z: -1
+                    Text
                     {
-                        anchors.fill: parent
-                        anchors.leftMargin: -10
-                        anchors.topMargin: -1
-                        anchors.bottomMargin: -3
-                        anchors.rightMargin: -3
-                        color: "#1a1a1a"
-                        border.width: 2
-                        border.color: "#333333"
-                        radius: 6
-                        z: -1
+                        id: text
+                        x: inPortsColumn.width/2 + 2
+                        anchors.verticalCenter: parent.verticalCenter;
+                        //anchors.verticalCenterOffset: -1;
+                        font: CasingStyle.portLabelsFont();
+                        color: inPlugLabelColors[index]
+                        text: modelData
                     }
                 }
             }
@@ -166,35 +167,35 @@ MalamuteCasing
         Column
         {
             id: outPortLabelsColumn
-            y: inPortLabelsColumn.y
-            x: outPortsColumn.x - outLabelWidth - 1;
+            y: outPortsColumn.y - 2
+            x: outPortsColumn.x - outLabelWidth - 3;
             width: outLabelWidth
 
-            spacing: CasingStyle.portSpacing();
+            spacing: CasingStyle.portSpacing() - 4;
+
 
             Repeater
             {
                 model: outPlugLabels
-                Text
+                Rectangle
                 {
-                    anchors.right: parent.right
-                    height: CasingStyle.portSize();
-                    font: CasingStyle.portLabelsFont();
-                    color: outPlugLabelColors[index]
-                    text: modelData
                     visible: modelData !== "";
-                    Rectangle
+                    width: textout.width + 5 + CasingStyle.portSize()/2
+                    height: CasingStyle.portSize() + 4;
+                    color: "#1a1a1a"
+                    border.width: 2
+                    border.color: "#333333"
+                    radius: 6
+                    z: -1
+                    Text
                     {
-                        anchors.fill: parent
-                        anchors.leftMargin: -3
-                        anchors.topMargin: -1
-                        anchors.bottomMargin: -3
-                        anchors.rightMargin: -10
-                        color: "#1a1a1a"
-                        border.width: 2
-                        border.color: "#333333"
-                        radius: 6
-                        z: -1
+                        id: textout
+                        x: 3
+                        anchors.verticalCenter: parent.verticalCenter;
+                        //anchors.verticalCenterOffset: -1;
+                        font: CasingStyle.portLabelsFont();
+                        color: outPlugLabelColors[index]
+                        text: modelData
                     }
                 }
             }
