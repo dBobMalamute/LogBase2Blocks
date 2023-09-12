@@ -130,7 +130,6 @@ MalamuteCasing
                         id: text
                         x: inPortsColumn.width/2 + 2
                         anchors.verticalCenter: parent.verticalCenter;
-                        //anchors.verticalCenterOffset: -1;
                         font: CasingStyle.portLabelsFont();
                         color: inPlugLabelColors[index]
                         text: modelData
@@ -192,7 +191,6 @@ MalamuteCasing
                         id: textout
                         x: 3
                         anchors.verticalCenter: parent.verticalCenter;
-                        //anchors.verticalCenterOffset: -1;
                         font: CasingStyle.portLabelsFont();
                         color: outPlugLabelColors[index]
                         text: modelData
