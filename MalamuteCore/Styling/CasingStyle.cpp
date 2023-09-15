@@ -10,7 +10,7 @@ CasingStyle::CasingStyle(QObject *parent) : QObject(parent)
                               QColor(0x71a0a6), QColor(0x8b71a6), QColor(0xa69571),
                               QColor(0xe63c10), QColor(0xd7d7cf), QColor(0x0a080d)};
 
-    m_nameFont = QFont("verdana", 16, QFont::Bold);
+    m_nameFont = QFont("verdana", 20, QFont::Bold);
     m_portLabelsFont = QFont("verdana", 11, QFont::Bold);
     m_validationTextFont = QFont("verdana", 14,QFont::Bold);
 }

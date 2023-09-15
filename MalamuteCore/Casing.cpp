@@ -136,7 +136,7 @@ void Casing::setupCaption()
         m_ideaName = attributes.displayName();
         emit ideaNameChanged(m_ideaName);
 
-        QFont nameFont("verdana",16, QFont::ExtraBold);
+        QFont nameFont("verdana",20, QFont::Bold);
         nameFont.setBold(true);
         QFontMetrics nameFontMetrics(nameFont);
         m_nameSize = nameFontMetrics.size(Qt::TextShowMnemonic,ideaName());
@@ -147,7 +147,7 @@ void Casing::setupCaption()
         m_ideaName = attributes.minimizedName();
         emit ideaNameChanged(m_ideaName);
 
-        QFont nameFont("verdana",16, QFont::ExtraBold);
+        QFont nameFont("verdana",20, QFont::ExtraBold);
         nameFont.setBold(true);
         QFontMetrics nameFontMetrics(nameFont);
         m_nameSize = nameFontMetrics.size(Qt::TextShowMnemonic,ideaName());

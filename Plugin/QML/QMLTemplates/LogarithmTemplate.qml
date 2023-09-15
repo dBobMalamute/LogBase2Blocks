@@ -170,7 +170,7 @@ Item
             anchors.horizontalCenter: parent.horizontalCenter
             y: 190
             color: idea.outPortLabelColors[0]
-            font.pointSize: 16
+            font.pointSize: 12
             font.family: "verdana"
             font.bold: true
             text: parseFloat(divisions.toPrecision(4));
@@ -233,23 +233,25 @@ Item
     Rectangle
     {
         id: controlsRow
-        width: buttonsRow.width + 10 //Row is width: 286
+        width: buttonsRow.width + 20 //Row is width: 286
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
-        height: 34
+        anchors.bottomMargin: -4
+        height: 40
 
-        radius: 4
+        radius: 8
         color: "#050512"
         Row
         {
             id: buttonsRow
-            x: 5
+            x: 10
             spacing: 6
+            visible: idea.valid
 
             Button
             {
                 id: divideByBaseButton
-                height: 34
+                height: 40
                 enabled: idea.valid;
                 anchors.verticalCenter: parent.verticalCenter;
                 onClicked:
@@ -259,7 +261,7 @@ Item
                 font.capitalization: Font.MixedCase
                 font.family: "verdana"
                 font.bold: true;
-                font.pointSize: 12
+                font.pointSize: 16
                 Material.background: idea.outPortLabelColors[0]
                 Material.foreground: "black"
             }
@@ -267,7 +269,7 @@ Item
             Button
             {
                 id: resetButton
-                height: 34
+                height: 40
                 text: "Reset"
                 enabled: idea.valid;
                 anchors.verticalCenter: parent.verticalCenter;
@@ -282,14 +284,14 @@ Item
                 font.capitalization: Font.MixedCase
                 font.family: "verdana"
                 font.bold: true;
-                font.pointSize: 12
+                font.pointSize: 16
                 Material.background: Material.Grey
                 Material.foreground:  "black"
             }
         }
     }
 
-    MediaPlayer
+    SoundEffect
     {
         id: popSound
         source: "qrc:/SoundEffects/shortPop.wav"

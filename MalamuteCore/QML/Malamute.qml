@@ -272,7 +272,6 @@ ApplicationWindow
         {
             if(showFrame)
             {
-                applicationWindow.menuBar = emptyMenuBar;
                 applicationWindow.header = emptyHeader;
                 corkboard.setHeaderHeight(0);
                 showFrame = false;
@@ -280,9 +279,8 @@ ApplicationWindow
             }
             else
             {
-                applicationWindow.menuBar = singleMalamuteMenus;
                 applicationWindow.header = palleteBar;
-                corkboard.setHeaderHeight(103);
+                corkboard.setHeaderHeight(48);
                 showFrame = true;
                 applicationWindow.flags = Qt.Window;
             }

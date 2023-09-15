@@ -3,15 +3,14 @@ import QtQuick.Controls 2.12
 
 FocusScope
 {
-    width: Math.max(10,textInput.implicitWidth)
-    height: textInput.implicitHeight
+    width: Math.max(16,textInput.implicitWidth + 16)
+    height: textInput.implicitHeight + 16
 
     Rectangle
     {
         anchors.fill: parent
-        anchors.margins: -2
 
-        radius: 4
+        radius: 6
 
         color: "#1a1a1a"
         border.width: 2
@@ -32,7 +31,7 @@ FocusScope
             anchors.verticalCenterOffset: -1
             font.bold: true
             font.underline: true
-            font.pointSize: 16
+            font.pointSize: 24
             font.family: "verdana"
             verticalAlignment: TextInput.AlignVCenter
             horizontalAlignment: TextInput.AlignHCenter

@@ -66,13 +66,13 @@ MalamuteCasing
         RectangularGlow
         {
             id: effect
-            x: selected ? 2.0 * CasingStyle.glowRadius() : CasingStyle.glowRadius()
-            y: selected ? 2.0 * CasingStyle.glowRadius() : CasingStyle.glowRadius()
+            x: selected ? 0 : CasingStyle.glowRadius()
+            y: selected ? 0 : CasingStyle.glowRadius()
             width: frameRect.width
             height: frameRect.height
 
-            glowRadius: CasingStyle.glowRadius()
-            spread: CasingStyle.glowSpread()
+            glowRadius: selected ? 2 * CasingStyle.glowRadius() : CasingStyle.glowRadius()
+            spread:  CasingStyle.glowSpread()
             color: CasingStyle.glowColor()
             cornerRadius: frameRect.radius + CasingStyle.glowRadius()
             z: frameRect.z - 2

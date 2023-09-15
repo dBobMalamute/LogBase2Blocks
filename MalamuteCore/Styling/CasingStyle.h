@@ -45,9 +45,10 @@ public:
 
 private:
     double m_bordersWidth = 4;
-    double m_frameRadius = 15;
+    double m_frameRadius = 20;
     QColor m_borderColor = QColor(0x70460c);
-    QColor m_borderSelectedColor = QColor(0xcc5708);
+    //QColor m_borderSelectedColor = QColor(0xcc5708);
+    QColor m_borderSelectedColor = QColor("0x0b0b0b");
 
     std::vector<QColor> m_gradientTopColors;
     std::vector<QColor> m_gradientBottomColors;
