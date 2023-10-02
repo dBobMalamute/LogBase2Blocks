@@ -15,7 +15,7 @@
         <file>QML/LogarithmDisplayBox.qml</file>
         <file>QML/LogarithmFractionBox.qml</file>
         <file>Images/DownArrows.png</file>
-        <file>DemoFiles/LogBase2WasmLoadFile.mutt</file>
+        <file>DemoFiles/InitialFile.mutt</file>
         <file>SoundEffects/shortPop.wav</file>
     </qresource>
 </RCC>

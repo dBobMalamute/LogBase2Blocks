@@ -45,7 +45,7 @@ CorkboardHandler::CorkboardHandler(QObject *parent) :
 
 void CorkboardHandler::loadInitialFile()
 {
-    load(QUrl("qrc:/DemoFiles/LogBase2WasmLoadFile.mutt"));
+    load(QUrl("qrc:/DemoFiles/InitialFile.mutt"));
 }
 
 CorkboardHandler::~CorkboardHandler()

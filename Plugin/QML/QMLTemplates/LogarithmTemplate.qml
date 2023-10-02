@@ -295,6 +295,6 @@ Item
     {
         id: popSound
         source: "qrc:/SoundEffects/shortPop.wav"
-        volume: 1.0
+        volume: 0.3
     }
 }

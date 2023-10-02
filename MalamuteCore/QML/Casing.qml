@@ -9,29 +9,46 @@ MalamuteCasing
     width: casingSize.width + 1.4 * 15 + 10;
     height: casingSize.height + 0.4 * 15;
 
+    RectangularGlow
+    {
+        id: effect
+        width: selected ? frameRect.width + 14 : frameRect.width + 2
+        height: selected ? frameRect.height + 14 : frameRect.height + 2
+        anchors.centerIn: frameRect
+        opacity: selected ? 1.0 : 0.2
+
+        glowRadius: CasingStyle.glowRadius()
+        spread: CasingStyle.glowSpread()
+        color: "teal"
+        cornerRadius: frameRect.radius + CasingStyle.glowRadius()
+        z: frameRect.z - 2
+    }
+
     Rectangle
     {
         id: frameRect
         x: 0.7 * 15; y: 0.2 * 15;
+        z: 0
         width: casingSize.width;
         height: casingSize.height
-        radius: CasingStyle.frameRadius();
-        border.color: selected ? CasingStyle.borderSelectedColor() : CasingStyle.borderColor()
-        border.width: CasingStyle.bordersWidth();
-
+        radius: 20;
         gradient: Gradient
         {
-            GradientStop{id: gradientTop; position: 0.25; color: CasingStyle.gradientTopColor(predefinedColor)}
-            GradientStop{id: gradientBottom; position: 0.95; color: CasingStyle.gradientBottomColor(predefinedColor)}
+            GradientStop{position: 0.05; color: "#181818"}
+            GradientStop{position: 0.95; color: "#5b5b5b"}
         }
-        Connections
+        Rectangle
         {
-            //Note. Do not put the connections in a Gradient type. It breaks for some reason.
-            target: root
-            function onPredefinedColorChanged(i)
+            id: mainSurface
+            width: parent.width - 8
+            height: parent.height - 8
+            x: 4
+            y: 4
+            radius: parent.radius
+            gradient: Gradient
             {
-                gradientTop.color = CasingStyle.gradientTopColor(i);
-                gradientBottom.color = CasingStyle.gradientBottomColor(i);
+                GradientStop{position: 0.05; color: "#5b5b5b"}
+                GradientStop{position: 0.95; color: "#333333"}
             }
         }
         Rectangle
@@ -43,41 +60,86 @@ MalamuteCasing
             height: nameSize.height + 10
             visible: ideaName !== "";
 
-            border.color: selected ? CasingStyle.borderSelectedColor() : CasingStyle.borderColor()
-            border.width: CasingStyle.bordersWidth();
             radius: CasingStyle.frameRadius();
 
             gradient: Gradient
             {
-                GradientStop{position: 0.0; color: "#ead0b4"}
-                GradientStop{position: 1.0; color: "#ddb284"}
+                GradientStop{position: 0.05; color: "#4d4d4d"}
+                GradientStop{position: 0.95; color: "#000000"}
             }
-            Text
+            Rectangle
             {
-                id: name
-                anchors.centerIn: parent
-                color: CasingStyle.nameColor()
-                font: CasingStyle.nameFont()
-                horizontalAlignment: Text.AlignHCenter
-                text: ideaName
+                anchors.top: parent.top;
+                anchors.topMargin: 4
+                anchors.horizontalCenter: parent.horizontalCenter;
+                width: parent.width - 8
+                height: parent.height - 8
+                visible: ideaName !== "";
+
+                radius: CasingStyle.frameRadius();
+
+                gradient: Gradient
+                {
+                    GradientStop{position: 0.05; color: "#272727"}
+                    GradientStop{position: 0.95; color: "#4d4d4d"}
+                }
+                Text
+                {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenterOffset: 2
+                    anchors.horizontalCenterOffset: 2
+                    color: "black"
+                    font: CasingStyle.nameFont()
+                    horizontalAlignment: Text.AlignHCenter
+                    text: ideaName
+                }
+                Text
+                {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenterOffset: -2
+                    anchors.horizontalCenterOffset: -2
+                    color: "black"
+                    font: CasingStyle.nameFont()
+                    horizontalAlignment: Text.AlignHCenter
+                    text: ideaName
+                }
+                Text
+                {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenterOffset: -2
+                    anchors.horizontalCenterOffset: 2
+                    color: "black"
+                    font: CasingStyle.nameFont()
+                    horizontalAlignment: Text.AlignHCenter
+                    text: ideaName
+                }
+                Text
+                {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenterOffset: 2
+                    anchors.horizontalCenterOffset: -2
+                    color: "black"
+                    font: CasingStyle.nameFont()
+                    horizontalAlignment: Text.AlignHCenter
+                    text: ideaName
+                }
+                Text
+                {
+                    id: name
+                    anchors.centerIn: parent
+                    color: selected ? "#4df64d" : Qt.lighter("#4df64d", 1.3)
+                    font: CasingStyle.nameFont()
+                    horizontalAlignment: Text.AlignHCenter
+                    text: ideaName
+                }
+
             }
+
         }
-
-        RectangularGlow
-        {
-            id: effect
-            x: selected ? 0 : CasingStyle.glowRadius()
-            y: selected ? 0 : CasingStyle.glowRadius()
-            width: frameRect.width
-            height: frameRect.height
-
-            glowRadius: selected ? 2 * CasingStyle.glowRadius() : CasingStyle.glowRadius()
-            spread:  CasingStyle.glowSpread()
-            color: CasingStyle.glowColor()
-            cornerRadius: frameRect.radius + CasingStyle.glowRadius()
-            z: frameRect.z - 2
-        }
-
         Column
         {
             id: inPortsColumn
@@ -96,7 +158,7 @@ MalamuteCasing
                     radius: CasingStyle.portSize();
                     width: CasingStyle.portSize();
                     height: CasingStyle.portSize();
-                    border.color: "#333333"
+                    border.color: "black"
                     border.width: CasingStyle.portBorderWidth();
                     color: inPlugLabelColors[index]
                 }
@@ -122,7 +184,7 @@ MalamuteCasing
                     height: CasingStyle.portSize() + 4;
                     color: "#1a1a1a"
                     border.width: 2
-                    border.color: "#333333"
+                    border.color: "black"
                     radius: 6
                     z: -1
                     Text
@@ -137,7 +199,6 @@ MalamuteCasing
                 }
             }
         }
-
         Column
         {
             id: outPortsColumn
@@ -157,7 +218,7 @@ MalamuteCasing
                     radius: CasingStyle.portSize();
                     width: CasingStyle.portSize();
                     height: CasingStyle.portSize();
-                    border.color: "#333333"
+                    border.color: "black"
                     border.width: CasingStyle.portBorderWidth();
                     color: outPlugLabelColors[index]
                 }
@@ -183,7 +244,7 @@ MalamuteCasing
                     height: CasingStyle.portSize() + 4;
                     color: "#1a1a1a"
                     border.width: 2
-                    border.color: "#333333"
+                    border.color: "black"
                     radius: 6
                     z: -1
                     Text
@@ -198,28 +259,63 @@ MalamuteCasing
                 }
             }
         }
-    }
-
-    Rectangle
-    {
-        color: validationColor
-        radius: CasingStyle.frameRadius();
-
-        y: validationBoxTop
-        anchors.left: frameRect.left;
-        width: frameRect.width
-        height: validationBoxSize.height === 0 ? 0 : validationBoxSize.height + 2*5 + 2*border.width
-
-        border.color: frameRect.border.color;
-        border.width: frameRect.border.width;
-        Text
+        Rectangle
         {
-            id: validatationMessageDisplay
-            color: CasingStyle.validationTextColor();
-            font: CasingStyle.validationTextFont();
-            horizontalAlignment: Text.AlignHCenter
-            anchors.centerIn: parent
-            text: validationMessage
+            gradient: Gradient
+            {
+                GradientStop{position: 0.05; color: "#181818"}
+                GradientStop{position: 0.95; color: "#5b5b5b"}
+            }
+
+            //color: validationColor
+            radius: frameRect.radius;
+
+            y: validationBoxTop - 2
+            anchors.left: frameRect.left;
+            width: frameRect.width
+            height: validationBoxSize.height === 0 ? 0 : validationBoxSize.height + 2*5 + 2*border.width + 4
+
+            Rectangle
+            {
+                width: parent.width - 8
+                height: parent.height - 8
+                x: 4
+                y: 4
+                radius: parent.radius
+                gradient: Gradient
+                {
+                    GradientStop{position: 0.05; color: "#5b5b5b"}
+                    GradientStop{position: 0.95; color: "#333333"}
+                }
+
+                Rectangle
+                {
+                    width: parent.width - 8
+                    height: parent.height - 8
+                    anchors.centerIn: parent
+
+                    radius: parent.radius
+                    gradient: Gradient
+                    {
+                        GradientStop{position: 0.05; color: Qt.darker(validationColor, 1.15)}
+                        GradientStop{position: 0.5; color: validationColor}
+                        GradientStop{position: 0.95; color: Qt.darker(validationColor, 1.15)}
+                    }
+                    color: validationColor
+                    Text
+                    {
+                        id: validatationMessageDisplay
+                        color: CasingStyle.validationTextColor();
+                        font: CasingStyle.validationTextFont();
+                        horizontalAlignment: Text.AlignHCenter
+                        anchors.centerIn: parent
+                        text: validationMessage
+                    }
+                }
+            }
+
+
+
         }
     }
 

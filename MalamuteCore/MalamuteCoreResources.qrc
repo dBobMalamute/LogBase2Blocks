@@ -1,8 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>Images/CorkboardImage.jpg</file>
         <file>Images/CloseIcon.png</file>
-        <file>Images/Blank.png</file>
         <file>QML/Wire.qml</file>
         <file>QML/PaletteToolTip.qml</file>
         <file>QML/StopLight.qml</file>
@@ -31,5 +29,6 @@
         <file>Images/CasingColors8.png</file>
         <file>Images/CasingColors9.png</file>
         <file>Fonts/VERDANAB.TTF</file>
+        <file>Images/BrushedSteel.jpg</file>
     </qresource>
 </RCC>
